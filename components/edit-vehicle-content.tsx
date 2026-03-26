@@ -11,6 +11,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import Toast from "@/components/toast"
 import { useSearchParams } from "next/navigation"
+import { BASE_URL } from "@/lib/api"
 
 interface Vehicle {
   id: number
@@ -70,7 +71,7 @@ export default function EditVehicleContent() {
     try {
       // Fetch from vehicles list using email
       const response = await fetch(
-        `https://fleetpulse-latest.onrender.com/admin/user/${encodeURIComponent(userEmailFromParams)}/vehicles`,
+        `${BASE_URL}/admin/user/${encodeURIComponent(userEmailFromParams)}/vehicles`,
         {
           headers: { accept: "application/json" },
         },
@@ -125,7 +126,7 @@ export default function EditVehicleContent() {
     setLoading(true)
 
     try {
-      const response = await fetch(`https://fleetpulse-latest.onrender.com/admin/vehicle/${vehicle.id}`, {
+      const response = await fetch(`${BASE_URL}/admin/vehicle/${vehicle.id}`, {
         method: "PUT",
         headers: {
           accept: "application/json",

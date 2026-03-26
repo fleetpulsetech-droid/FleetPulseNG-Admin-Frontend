@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Plus } from "lucide-react"
 import VehicleTable from "./vehicle-table"
 import Toast from "./toast"
+import { BASE_URL } from "@/lib/api"
 
 interface User {
   id: number
@@ -54,7 +55,7 @@ export default function UserDetails({ user }: { user: User }) {
 
     try {
       const response = await fetch(
-        `https://fleetpulse-latest.onrender.com/admin/user/${encodeURIComponent(user.email)}/vehicles`,
+        `${BASE_URL}/admin/user/${encodeURIComponent(user.email)}/vehicles`,
         {
           headers: { accept: "application/json" },
         },

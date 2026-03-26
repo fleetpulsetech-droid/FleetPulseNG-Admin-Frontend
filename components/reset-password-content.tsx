@@ -10,6 +10,7 @@ import Link from "next/link"
 import { Eye, EyeOff, ArrowLeft } from "lucide-react"
 import Toast from "@/components/toast"
 import { useSearchParams } from "next/navigation"
+import { BASE_URL } from "@/lib/api"
 
 interface ApiResponse {
   responseCode: string
@@ -47,7 +48,7 @@ export default function ResetPasswordContent() {
     setLoading(true)
 
     try {
-      const response = await fetch("https://fleetpulse-latest.onrender.com/admin/reset-password", {
+      const response = await fetch(`${BASE_URL}/admin/reset-password`, {
         method: "POST",
         headers: {
           accept: "application/json",

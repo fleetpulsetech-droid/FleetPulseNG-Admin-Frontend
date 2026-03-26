@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card"
 import { Search } from "lucide-react"
 import UserDetails from "@/components/user-details"
 import Toast from "@/components/toast"
+import { BASE_URL } from "@/lib/api"
 import { useSearchParams } from "next/navigation"
 
 interface User {
@@ -42,7 +43,7 @@ export default function DashboardContent() {
     setSuccess("")
 
     try {
-      const response = await fetch(`https://fleetpulse-latest.onrender.com/admin/user/${encodeURIComponent(email)}`, {
+      const response = await fetch(`${BASE_URL}/admin/user/${encodeURIComponent(email)}`, {
         headers: { accept: "application/json" },
       })
 

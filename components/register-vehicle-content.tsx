@@ -11,6 +11,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import Toast from "@/components/toast"
 import { useSearchParams } from "next/navigation"
+import { BASE_URL } from "@/lib/api"
 
 interface ApiResponse<T> {
   responseCode: string
@@ -74,7 +75,7 @@ export default function RegisterVehicleContent() {
     setLoading(true)
 
     try {
-      const response = await fetch("https://fleetpulse-latest.onrender.com/admin/register-vehicle", {
+      const response = await fetch(`${BASE_URL}/admin/register-vehicle`, {
         method: "POST",
         headers: {
           accept: "application/json",
